@@ -30,13 +30,13 @@ npm run lint       # 린트
 
 | 구분       | 사용 기술                              |
 | ---------- | -------------------------------------- |
-| 프레임워크 | Next.js 15 (App Router, Static Export) |
+| 프레임워크 | Next.js 16 (App Router)                |
 | 언어       | TypeScript (strict)                    |
 | UI         | React 19 (Server Components 기본)      |
 | 스타일링   | Tailwind CSS v4 (`@theme` 디자인 토큰) |
 | 아키텍처   | FSD (Feature-Sliced Design)            |
 | 폰트       | Pretendard, JetBrains Mono             |
-| 배포       | GitHub Pages                           |
+| 배포       | Vercel                                 |
 
 ## 작업 원칙
 
