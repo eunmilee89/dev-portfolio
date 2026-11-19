@@ -35,10 +35,13 @@ export function Grape({
         onClick={() => onSelect(month)}
         className={cn(
           // 송이에 매달린 알처럼 보이도록 비스듬히 기울인다
-          "peer relative block h-10 w-9 -rotate-15 rounded-[50%] transition-[scale] duration-200 outline-none",
+          // iOS Safari가 탭할 때 덮는 사각형 하이라이트를 없앤다
+          "peer relative block h-10 w-9 -rotate-15 rounded-[50%] transition-[scale] duration-200 [-webkit-tap-highlight-color:transparent]",
           "enabled:cursor-pointer enabled:hover:z-10 enabled:hover:scale-110 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-foreground/60",
-          isSelected &&
-            "z-10 ring-2 ring-foreground/70 ring-offset-2 ring-offset-surface",
+          // ring-offset은 틈을 배경색으로 칠해 겹친 옆 알을 가리므로, 틈이 투명한 outline-offset을 쓴다
+          isSelected
+            ? "z-10 outline-2 outline-offset-2 outline-foreground/70"
+            : "outline-none",
         )}
       >
         <GrapeBerry color={getGrapeColor(postCount, isFuture)} className="size-full" />
