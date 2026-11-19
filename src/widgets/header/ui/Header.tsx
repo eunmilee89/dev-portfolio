@@ -20,7 +20,7 @@ export function Header() {
 
   return (
     // body 좌우 여백(px-6 + mx-2)까지 배경을 덮어야 화면 끝까지 깔린 콘텐츠가 헤더 옆으로 비치지 않는다
-    <header className="sticky top-0 z-100 flex items-center justify-between py-6 bg-background before:absolute before:inset-y-0 before:-inset-x-8 before:-z-10 before:bg-background">
+    <header className="sticky top-0 z-100 flex items-center justify-between py-5 bg-background before:absolute before:inset-y-0 before:-inset-x-8 before:-z-10 before:bg-background">
       <div className="flex items-center justify-between w-full lg:hidden">
         <Link href="/" className="font-extrabold text-foreground text-xl">
           <h1>
@@ -46,25 +46,25 @@ export function Header() {
       </Link>
 
       <nav className="hidden lg:block">
-        <ul className="flex gap-6">
+        <ul className="flex gap-8">
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href;
             return (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`relative text-[14px] transition-transform duration-200 hover:-translate-y-0.5 ${
+                  className={`group relative inline-block text-[15px] tracking-tight transition-[color,translate] duration-200 ease-out hover:-translate-y-0.5 ${
                     isActive
-                      ? "text-primary font-bold"
-                      : "text-secondary hover:text-foreground"
+                      ? "font-bold text-primary"
+                      : "font-medium text-subtext hover:text-foreground"
                   }`}
                 >
                   {item.label}
                   <span
-                    className={`absolute -bottom-2 left-1/2 h-[2px] rounded-full transition-all duration-300 ease-out -translate-x-1/2 ${
+                    className={`absolute -bottom-1.5 left-1/2 h-[2px] -translate-x-1/2 rounded-full bg-primary transition-[width,opacity] duration-300 ease-out ${
                       isActive
-                        ? "w-full bg-primary"
-                        : "w-0 bg-transparent group-hover:w-full"
+                        ? "w-full opacity-100"
+                        : "w-0 opacity-0 group-hover:w-full group-hover:opacity-60"
                     }`}
                   />
                 </Link>
