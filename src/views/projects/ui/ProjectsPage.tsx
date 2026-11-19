@@ -9,7 +9,7 @@ export function ProjectsPage() {
 
   return (
     <>
-      <ProjectsHero projectCount={projects.length} />
+      <ProjectsHero />
 
       <div
         id={PROJECT_LIST_ID}

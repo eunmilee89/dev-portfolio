@@ -4,13 +4,8 @@ import { SpotlightSurface } from "@/shared/ui/spotlight-surface";
 import { FlowSteps } from "./FlowSteps";
 
 export const PROJECT_LIST_ID = "project-list";
-const COUNT_DIGITS = 2;
 
-interface ProjectsHeroProps {
-  projectCount: number;
-}
-
-export function ProjectsHero({ projectCount }: ProjectsHeroProps) {
+export function ProjectsHero() {
   return (
     // body의 좌우 여백(px-6 + mx-2)만큼 끌어내 배경을 화면 끝까지 채운다
     <SpotlightSurface className="-mx-8 flex min-h-[calc(100svh-5.5rem)] items-center">
@@ -18,15 +13,7 @@ export function ProjectsHero({ projectCount }: ProjectsHeroProps) {
 
       <div className="mx-auto grid w-full max-w-[102rem] items-center gap-14 px-8 py-20 lg:grid-cols-[1.2fr_1fr] lg:gap-16 lg:px-20 2xl:px-30">
         <div className="text-center lg:text-left">
-          <p className="inline-flex items-center gap-2 rounded-full border border-line bg-background/60 px-3 py-1 font-mono text-xs tracking-widest text-secondary backdrop-blur animate-rise-in motion-reduce:animate-none">
-            <span
-              className="h-2 w-2 rounded-full bg-primary animate-glow-pulse motion-reduce:animate-none"
-              aria-hidden
-            />
-            PROJECTS · {String(projectCount).padStart(COUNT_DIGITS, "0")}
-          </p>
-
-          <h1 className="mt-6 text-4xl font-black leading-[1.15] tracking-tight text-foreground break-keep sm:text-5xl md:text-6xl xl:text-7xl">
+          <h1 className="text-4xl font-black leading-[1.15] tracking-tight text-foreground break-keep sm:text-5xl md:text-6xl xl:text-7xl">
             <span className="block animate-rise-in [animation-delay:150ms] motion-reduce:animate-none">
               화면 너머,
             </span>
