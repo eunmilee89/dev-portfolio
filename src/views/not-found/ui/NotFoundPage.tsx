@@ -4,8 +4,9 @@ import { LinkButton } from "@/shared/ui/link-button";
 /** 존재하지 않는 경로로 들어온 방문자를 주요 페이지로 안내한다 */
 export function NotFoundPage() {
   return (
-    // 헤더(약 4rem)·푸터(약 4.5rem)를 뺀 남은 화면 높이 안에서 세로 중앙에 오도록 한다
-    <section className="flex min-h-[calc(100dvh-8.5rem)] flex-col items-center justify-center text-center animate-rise-in motion-reduce:animate-none">
+    // 헤더·푸터를 뺀 남은 화면 높이 안에서 세로 중앙에 오도록 한다.
+    // 두 높이의 합이 화면 크기마다 달라(132px · 136px · 148px) 1px만 넘쳐도 스크롤이 생기므로 구간별로 맞춘다
+    <section className="flex min-h-[calc(100dvh-8.25rem)] md:min-h-[calc(100dvh-8.5rem)] lg:min-h-[calc(100dvh-9.25rem)] flex-col items-center justify-center text-center animate-rise-in motion-reduce:animate-none">
       <h1 className="text-7xl font-black tracking-tight md:text-9xl">
         <GradientText>404</GradientText>
       </h1>
