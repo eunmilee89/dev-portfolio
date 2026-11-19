@@ -87,6 +87,8 @@
 }
 
 :root {
+  /* 다크 모드를 직접 지원한다고 알려야 브라우저 자동 다크 모드가 포도알 같은 고정 색을 반전하지 않는다 */
+  color-scheme: light dark;
   --background: #ffffff;
   --foreground: #171717;
   --subtext: #52525b;

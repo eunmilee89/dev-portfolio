@@ -52,13 +52,14 @@ export function Hero() {
           </ul>
         </div>
       </div>
-      <div className="shrink-0">
+      {/* rise-in 애니메이션이 끝난 뒤에도 filter: blur(0)을 유지해 invert를 덮으므로, 반전은 감싸는 요소에 건다 */}
+      <div className="shrink-0 dark:mix-blend-screen dark:invert">
         <Image
           src="/icons/A Ghost.svg"
           alt="귀여운 유령 캐릭터 로고"
           width={500}
           height={500}
-          className="w-56 h-56 md:w-72 md:h-72 lg:w-[500px] lg:h-[500px] dark:mix-blend-screen dark:invert block animate-rise-in [animation-delay:150ms] motion-reduce:animate-none"
+          className="w-56 h-56 md:w-72 md:h-72 lg:w-[500px] lg:h-[500px] block animate-rise-in [animation-delay:150ms] motion-reduce:animate-none"
           priority
         />
       </div>
