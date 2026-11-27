@@ -3,6 +3,7 @@ import type { Project } from "./types";
 const TASTEBOX_IMAGE_DIR = "/images/projects/tastebox";
 const TODAY_LOG_IMAGE_DIR = "/images/projects/today-log";
 const YOUTUBE_CLONE_IMAGE_DIR = "/images/projects/youtube-clone";
+const BOOK_STORE_IMAGE_DIR = "/images/projects/book-store";
 
 export const PROJECTS: Project[] = [
   {
@@ -527,6 +528,211 @@ export const PROJECTS: Project[] = [
           "public/_redirects에 모든 경로를 index.html로 돌려주는 규칙을 추가했습니다.",
         result:
           "**어떤 경로에서 새로고침하거나 링크로 바로 들어와도** React Router가 페이지를 정상적으로 렌더링하게 되었습니다.",
+      },
+    ],
+  },
+  {
+    slug: "book-store",
+    badge: "PERSONAL PROJECT · FULLSTACK",
+    title: "Book Store",
+    tagline:
+      "도서 탐색부터 리뷰 · 좋아요 · 장바구니 · 주문까지 온라인 서점의 핵심 흐름을 구현한 풀스택 이커머스 웹 애플리케이션",
+    summary:
+      "React 19 + TypeScript 프론트엔드와 Express + MariaDB REST API 서버를 모두 직접 구현한 프로그래머스 풀스택 과정 프로젝트입니다.",
+    links: [
+      {
+        label: "GitHub · Frontend",
+        href: "https://github.com/eunmilee89/prgms-book-store-frontend",
+        variant: "primary",
+        icon: "github",
+      },
+      {
+        label: "GitHub · Backend",
+        href: "https://github.com/eunmilee89/prgms-book-store-backend",
+        icon: "github",
+      },
+    ],
+    heroMedia: { src: `${BOOK_STORE_IMAGE_DIR}/hero.png`, alt: "메인 화면" },
+
+    overview: {
+      meta: [
+        {
+          label: "기간",
+          value: "2025.03 ~ 2025.05 (리디자인 2026.11)",
+        },
+        { label: "인원", value: "1인" },
+        { label: "역할", value: "프론트엔드 · 백엔드" },
+        { label: "구분", value: "개인 프로젝트 (프로그래머스 풀스택 과정)" },
+      ],
+      description:
+        "도서 목록 · 상세 · 리뷰 · 좋아요 · 장바구니 · 주문까지 **이커머스의 핵심 흐름을 프론트엔드와 백엔드 양쪽에서 직접 구현**한 온라인 서점입니다. 백엔드는 **Express + MariaDB로 REST API와 JWT 인증**을 만들고, 주문처럼 여러 테이블을 함께 바꾸는 요청은 **트랜잭션**으로 묶었습니다. 프론트엔드는 **TanStack Query로 서버 상태를, Zustand로 인증 · 토스트 상태를** 나눠 관리하고, 라이트 / 다크 테마와 모바일 반응형을 지원합니다.",
+    },
+
+    features: [
+      {
+        title: "카테고리 필터 · 무한 스크롤",
+        description:
+          "카테고리 · 신간 필터를 쿼리스트링으로 유지하고, 그리드 / 리스트 보기를 전환할 수 있습니다. useInfiniteQuery + IntersectionObserver로 스크롤이 끝에 닿으면 다음 페이지를 불러옵니다.",
+        media: {
+          src: `${BOOK_STORE_IMAGE_DIR}/books.png`,
+          alt: "도서 목록 화면",
+        },
+      },
+      {
+        title: "도서 상세 · 리뷰 · 좋아요",
+        description:
+          "도서 정보와 표지 확대 모달, 상세 설명 · 목차 · 리뷰 탭을 제공합니다. 좋아요는 로그인한 사용자 기준으로 추가 · 취소되며, 결과를 토스트로 알려줍니다.",
+        media: {
+          src: `${BOOK_STORE_IMAGE_DIR}/book-detail.png`,
+          alt: "도서 상세 화면",
+        },
+      },
+      {
+        title: "장바구니 선택 · 주문 요약",
+        description:
+          "개별 · 전체 선택으로 주문할 도서를 고르면, 선택한 도서 기준으로 총 수량과 총 금액을 계산해 요약합니다. 선택한 항목만 주문서로 넘어갑니다.",
+        media: {
+          src: `${BOOK_STORE_IMAGE_DIR}/cart.png`,
+          alt: "장바구니 화면",
+        },
+      },
+      {
+        title: "주문서 작성 · 주소 찾기",
+        description:
+          "React Hook Form으로 배송 정보를 검증하고, 다음(카카오) 우편번호 서비스로 주소를 검색합니다. 주문이 완료되면 주문 내역에서 주문별 도서 목록을 펼쳐볼 수 있습니다.",
+        media: {
+          src: `${BOOK_STORE_IMAGE_DIR}/order.png`,
+          alt: "주문서 작성 화면",
+        },
+      },
+    ],
+
+    techStack: [
+      {
+        category: "FRONTEND",
+        items: [
+          {
+            name: "React 19 + TypeScript",
+            reason:
+              "도서 · 장바구니 · 주문 모델을 타입으로 정의해, 서버 응답과 화면에서 쓰는 데이터 형태가 어긋나는 지점을 컴파일 단계에서 찾기 위해 사용했습니다.",
+          },
+          {
+            name: "TanStack Query v5",
+            reason:
+              "도서 목록 · 상세처럼 서버에서 오는 데이터를 캐싱하고, useInfiniteQuery로 페이지 단위 무한 스크롤을 구현하기 위해 사용했습니다.",
+          },
+          {
+            name: "Zustand",
+            reason:
+              "로그인 상태와 토스트 목록처럼 여러 화면에서 공유하는 클라이언트 상태를 가볍게 관리하기 위해 사용했습니다.",
+          },
+          {
+            name: "styled-components",
+            reason:
+              "테마 토큰을 ThemeProvider로 내려 라이트 / 다크 테마를 한 번에 전환하고, 미디어 쿼리를 테마에 함께 정의해 반응형을 처리하기 위해 사용했습니다.",
+          },
+          {
+            name: "React Hook Form",
+            reason:
+              "회원가입 · 로그인 · 주문서 폼의 유효성 검사를 선언적으로 작성하고, 입력마다 리렌더링되지 않도록 하기 위해 사용했습니다.",
+          },
+          {
+            name: "MSW v2 · Faker",
+            reason:
+              "리뷰 · 배너처럼 백엔드에 아직 없는 API를 목 데이터로 응답해, 서버 구현과 상관없이 화면을 먼저 만들기 위해 사용했습니다.",
+          },
+        ],
+      },
+      {
+        category: "BACKEND",
+        items: [
+          {
+            name: "Node.js + Express",
+            reason:
+              "도메인별 라우터와 컨트롤러를 분리해 회원 · 도서 · 좋아요 · 장바구니 · 주문 REST API를 구성하기 위해 사용했습니다.",
+          },
+          {
+            name: "MariaDB (mysql2)",
+            reason:
+              "도서 · 주문처럼 관계가 뚜렷한 데이터를 테이블로 정규화하고, 주문 API는 mysql2/promise의 트랜잭션으로 묶기 위해 사용했습니다.",
+          },
+          {
+            name: "JWT · crypto",
+            reason:
+              "로그인 시 발급한 토큰으로 사용자를 식별하고, 비밀번호는 pbkdf2 + salt로 해시해 저장하기 위해 사용했습니다.",
+          },
+        ],
+      },
+    ],
+
+    architecture: {
+      notes: [
+        {
+          title: "라우터 · 컨트롤러 분리",
+          description:
+            "routes는 URI와 컨트롤러 매핑만 담당하고, 비즈니스 로직과 쿼리는 도메인별 Controller에 두어 API가 늘어나도 파일 역할이 섞이지 않도록 했습니다.",
+        },
+        {
+          title: "토큰 기반 사용자 식별",
+          description:
+            "요청 Body로 받던 userId를 없애고, ensureAuthorization으로 토큰을 검증해 꺼낸 id만 사용하도록 해 다른 사용자의 데이터를 조작할 수 없게 했습니다.",
+        },
+        {
+          title: "API 모듈 · 커스텀 훅 계층",
+          description:
+            "api 폴더에서 axios 요청과 응답 변환을, hooks에서 상태 관리를 맡겨, 페이지 컴포넌트는 훅이 돌려주는 데이터로 화면만 그리도록 했습니다.",
+        },
+      ],
+    },
+
+    challenges: [
+      {
+        hash: "#d7efdf3",
+        title: "주문 도중 실패 시 데이터 불일치",
+        problem:
+          "주문은 배송 정보 저장 → 주문 생성 → 주문 도서 저장 → 장바구니 삭제를 차례로 실행하는데, 중간 단계가 실패해도 앞 단계의 데이터는 그대로 남았습니다.",
+        cause:
+          "네 개의 쿼리가 각각 독립적으로 커밋되어, 하나가 실패해도 이미 실행된 쿼리를 되돌릴 방법이 없었습니다.",
+        solution:
+          "하나의 커넥션에서 beginTransaction으로 네 쿼리를 묶고, 실패하면 rollback, 모두 성공하면 commit하도록 바꿨습니다. 장바구니 조회 · 삭제 조건에 user_id도 추가했습니다.",
+        result:
+          "**주문이 전부 성공하거나 전부 취소**되어, 배송 정보만 남거나 장바구니만 지워지는 불일치가 사라졌습니다.",
+      },
+      {
+        hash: "#258dbe4",
+        title: "서버 응답 필드명 불일치",
+        problem:
+          "도서 목록의 카테고리 버튼이 빈 칸으로 보이고, 장바구니의 표지가 모두 같으며 도서를 누르면 /books/undefined로 이동했습니다.",
+        cause:
+          "서버는 category_id · category_name · book_id처럼 스네이크 케이스로 응답하는데, 프론트 모델은 id · name · bookId를 기대하고 있었습니다.",
+        solution:
+          "API 모듈에 응답 타입을 따로 정의하고, 요청 함수에서 응답을 프론트 모델 형태로 변환해 반환하도록 했습니다.",
+        result:
+          "**변환을 API 계층 한 곳에서 처리**해, 컴포넌트는 서버 응답 형태를 몰라도 되고 카테고리 · 장바구니가 정상적으로 표시되었습니다.",
+      },
+      {
+        hash: "#9b9c1f2",
+        title: "주소 찾기 후 주소가 입력되지 않음",
+        problem:
+          "주소 찾기 팝업에서 주소를 선택해도 주문서의 주소 입력란이 채워지지 않았습니다.",
+        cause:
+          "우편번호 서비스의 완료 콜백 이름을 oncomplete가 아닌 oncompleted로 잘못 적어, 콜백이 한 번도 호출되지 않았습니다.",
+        solution:
+          "콜백 이름을 oncomplete로 고치고, 사용자가 도로명 · 지번 중 무엇을 골랐는지에 따라 해당 주소를 넘기도록 했습니다.",
+        result:
+          "**선택한 주소가 입력란에 바로 채워지고**, 사용자가 고른 주소 형식이 그대로 반영되었습니다.",
+      },
+      {
+        hash: "#410f9eb",
+        title: "중복 좋아요 요청 시 400 응답",
+        problem:
+          "이미 좋아요한 도서에 다시 좋아요 요청이 들어오면, 원인을 알 수 없는 400 응답만 돌아왔습니다.",
+        cause:
+          "likes 테이블의 (user_id, liked_book_id) 복합 키 중복 오류를 다른 DB 오류와 구분하지 않고 모두 400으로 처리했습니다.",
+        solution:
+          "에러 코드가 ER_DUP_ENTRY이면 409 Conflict와 안내 메시지를 응답하도록 분기했습니다.",
+        result:
+          "**중복 좋아요를 409로 명확히 구분**해, 클라이언트가 상황에 맞는 메시지를 보여줄 수 있게 되었습니다.",
       },
     ],
   },
